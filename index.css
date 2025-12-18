@@ -1,0 +1,21 @@
+/* Gradient achtergrond */
+.turf-gradient-bg {
+  background: linear-gradient(300deg, #FFB23D, #7D00FE, #FF5500, #FFB23D);
+  background-size: 400% 400%;
+  animation: turfGradientAnim 15s ease infinite;
+}
+
+/* Animatie keyframes */
+@keyframes turfGradientAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Zorg dat de body wit is zodat de content zichtbaar is */
+body {
+  margin: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  background-color: #fff;
+  color: #000;
+}
