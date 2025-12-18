@@ -2,49 +2,29 @@ name: Deploy Vite React App to GitHub Pages
 
 on:
   push:
-    branches: ["main"]       # draait bij push naar main
-  workflow_dispatch:          # handmatige run
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout de repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # 3️⃣ Installeer dependencies
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Build Vite project
       - name: Build Vite app
-        run: npm run build       # genereert /dist map
+        run: npm run build   # genereert /dist map
 
-      # 5️⃣ Upload build artifact naar GitHub Pages
-      - name: Upload artifact to Pages
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: dist             # alleen de dist map
-
-      # 6️⃣ Deploy naar GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist   # deploy alleen de build output
