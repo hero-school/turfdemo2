@@ -1,1 +1,0 @@
-.turf-gradient-bg{background:linear-gradient(300deg,#ffb23d,#7d00fe,#f50,#ffb23d);background-size:400% 400%;animation:turfGradientAnim 15s ease infinite}@keyframes turfGradientAnim{0%{background-position:0% 50%}50%{background-position:100% 50%}to{background-position:0% 50%}}body{margin:0;font-family:Barlow Condensed,sans-serif;background-color:#fff;color:#000}
