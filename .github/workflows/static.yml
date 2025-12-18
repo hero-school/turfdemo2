@@ -2,28 +2,37 @@ name: Deploy Vite React App to GitHub Pages
 
 on:
   push:
-    branches: ["main"]        # Draait op elke push naar main
-  workflow_dispatch:          # En handmatig triggerbaar
+    branches: ["main"]        # Draait bij elke push naar main
+  workflow_dispatch:          # Kan ook handmatig getriggerd worden
+
+# Zorg dat de workflow schrijfrechten heeft
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout de code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
+      # 3️⃣ Installeer dependencies
       - name: Install dependencies
         run: npm install
 
+      # 4️⃣ Build de Vite app
       - name: Build Vite app
         run: npm run build
 
+      # 5️⃣ Deploy naar GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
