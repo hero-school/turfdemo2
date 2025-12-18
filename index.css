@@ -3,6 +3,7 @@
   background: linear-gradient(300deg, #FFB23D, #7D00FE, #FF5500, #FFB23D);
   background-size: 400% 400%;
   animation: turfGradientAnim 15s ease infinite;
+  min-height: 100vh;
 }
 
 /* Animatie keyframes */
@@ -12,10 +13,12 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Zorg dat de body wit is zodat de content zichtbaar is */
-body {
+/* Zorg dat de body full height heeft */
+html, body, #root {
   margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Barlow Condensed', sans-serif;
-  background-color: #fff;
-  color: #000;
+  background-color: #000; /* zwart zoals in je App.tsx */
+  color: #fff;
 }
